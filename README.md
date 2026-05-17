@@ -58,10 +58,9 @@ An Alphanumeric Sender ID is a custom name (up to **11 characters**) that appear
 - Allowed: letters (A–Z, a–z), digits (0–9), spaces, hyphens, underscores
 - Must contain at least one letter (cannot be all numbers)
 
-**Step 1 — Enable the feature (do this first or the option won't appear):**
+**Step 1 — Upgrade your Twilio account:**
 
-1. In the Twilio Console go to **Messaging → Settings → General**
-2. Find **Alphanumeric Sender ID** and set it to **Enabled**, then save
+Alphanumeric Sender ID is **automatically enabled** once you upgrade to a paid account. On a free trial it shows as **Disabled** and cannot be used — upgrading is the only prerequisite.
 
 **Step 2 — UK pre-registration (required for United Kingdom):**
 
@@ -79,7 +78,7 @@ An Alphanumeric Sender ID is a custom name (up to **11 characters**) that appear
 
 Once added, Twilio routes UK messages through your alphanumeric name automatically via Country Code Geomatch.
 
-> **Note:** Alphanumeric Sender IDs are one-way — recipients cannot reply. They require a paid Twilio account (not available on free trial).
+> **Note:** Alphanumeric Sender IDs are one-way — recipients cannot reply. The feature is automatically enabled when you upgrade to a paid account; it cannot be used on a free trial.
 
 > **SMS pricing:** Sending to UK numbers costs approximately £0.04/message. Check [twilio.com/sms/pricing](https://www.twilio.com/sms/pricing) for current rates. No opt-ins or template approvals required.
 
