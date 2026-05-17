@@ -1,13 +1,13 @@
 # outreach-tool
 
-Automated local business outreach: finds businesses with no website on Google Maps and sends them a WhatsApp message.
+Automated local business outreach: finds businesses with no website on Google Maps and sends them an SMS.
 
 ## How it works
 
 - Queries Google Maps via SerpAPI for local businesses in a target area
 - Filters results to businesses with no website listed
 - Stores leads in a local SQLite database (`leads.db`)
-- Sends WhatsApp messages via Twilio on a daily schedule
+- Sends SMS messages via Twilio on a daily schedule
 
 ## Setup
 
@@ -33,18 +33,18 @@ Fill in your credentials in `.env` before running anything.
 2. Go to the Console — your **Account SID** and **Auth Token** are shown under **Account Info**
 3. Add them to `.env`:
    ```
-   TWILIO_ACCOUNT_SID=your_account_sid
-   TWILIO_AUTH_TOKEN=your_auth_token
+   TWILIO_SID=your_account_sid
+   TWILIO_TOKEN=your_auth_token
    ```
-4. For the WhatsApp sender number:
-   - **Sandbox (testing):** Go to Messaging → Try it out → Send a WhatsApp message. Use the sandbox number and set:
+4. Buy a Twilio phone number with SMS capability:
+   - Go to Console → Phone Numbers → Manage → Buy a number
+   - Make sure SMS is enabled for the number
+   - Set it in `.env`:
      ```
-     TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
+     TWILIO_FROM_NUMBER=+441234567890
      ```
-     Sandbox only works with numbers that have opted in by messaging the sandbox join code.
-   - **Production:** Apply for an approved WhatsApp Business sender at [twilio.com/whatsapp/request-access](https://www.twilio.com/whatsapp/request-access). Once approved, set `TWILIO_WHATSAPP_FROM` to your approved number in `whatsapp:+1xxxxxxxxxx` format.
 
-> **Warning:** The WhatsApp Business API requires Meta-approved message templates for cold outreach. You cannot send free-form messages to users who have not messaged you first. Sandbox mode only works with numbers that have explicitly opted in.
+> **SMS pricing:** Sending to UK numbers costs approximately £0.04/message. Check [twilio.com/sms/pricing](https://www.twilio.com/sms/pricing) for current rates. No opt-ins or template approvals required.
 
 ## Usage
 
@@ -53,7 +53,7 @@ Fill in your credentials in `.env` before running anything.
 python -c "import db; db.init_db(); from main import scrape_now; scrape_now()"
 ```
 
-**Run the scheduler — scrape and send on a daily schedule:**
+**Run the scheduler — sends a batch of 5 leads daily at 09:00:**
 ```bash
 python main.py
 ```
