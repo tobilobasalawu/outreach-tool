@@ -47,6 +47,39 @@ Fill in your credentials in `.env` before running anything.
      ```
    - Twilio will automatically route UK messages through your alphanumeric sender ID via Country Code Geomatch
 
+## Getting an Alphanumeric Sender ID
+
+An Alphanumeric Sender ID is a custom name (up to **11 characters**) that appears as the SMS sender instead of a phone number — e.g. `MyBiz` or `Outreach1`.
+
+> **Note:** The **Messaging → Senders** section in the left nav only covers Short codes and WhatsApp senders. Alphanumeric sender IDs are added **inside a specific Messaging Service**, not there.
+
+**Formatting rules:**
+- Max 11 characters
+- Allowed: letters (A–Z, a–z), digits (0–9), spaces, hyphens, underscores
+- Must contain at least one letter (cannot be all numbers)
+
+**Step 1 — Upgrade your Twilio account:**
+
+Alphanumeric Sender ID is **automatically enabled** once you upgrade to a paid account. On a free trial it shows as **Disabled** and cannot be used — upgrading is the only prerequisite.
+
+**Step 2 — UK pre-registration (required for United Kingdom):**
+
+1. Go to **Messaging → Regulatory Compliance** in the Console
+2. Find **Alphanumeric Sender ID** and click **Register** next to **United Kingdom**
+3. Fill in your business name, address, and use case description
+4. Submit — approval typically takes a few business days
+
+**Step 3 — Add it to your Messaging Service:**
+
+1. Go to **Messaging → Services** and open your service (e.g. `OutreachTool`)
+2. Under the **Senders** tab click **Add Senders**
+3. From the dropdown select **Alpha Sender**
+4. Type your desired name (e.g. `MyBiz`) and save
+
+Once added, Twilio routes UK messages through your alphanumeric name automatically via Country Code Geomatch.
+
+> **Note:** Alphanumeric Sender IDs are one-way — recipients cannot reply. The feature is automatically enabled when you upgrade to a paid account; it cannot be used on a free trial.
+
 > **SMS pricing:** Sending to UK numbers costs approximately £0.04/message. Check [twilio.com/sms/pricing](https://www.twilio.com/sms/pricing) for current rates. No opt-ins or template approvals required.
 
 ## Usage
