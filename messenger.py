@@ -25,7 +25,7 @@ def send_sms(name: str, phone: str, dry_run: bool = False) -> bool:
         try:
             client.messages.create(
                 body=body,
-                from_=config.TWILIO_FROM_NUMBER,
+                messaging_service_sid=config.TWILIO_MESSAGING_SERVICE_SID,
                 to=phone,
             )
             return True

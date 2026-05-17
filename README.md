@@ -36,16 +36,16 @@ Fill in your credentials in `.env` before running anything.
    TWILIO_SID=your_account_sid
    TWILIO_TOKEN=your_auth_token
    ```
-4. Register an Alphanumeric Sender ID (required for UK SMS):
-   - Go to Console → Messaging → Senders → Alphanumeric Sender IDs
-   - Click **Register an Alphanumeric Sender ID**
-   - Choose a name: max 11 characters, letters and numbers only, no spaces (e.g. `WebRedesign`)
-   - Complete the UK registration form — usually approved within a few hours
+4. Create a Twilio Messaging Service:
+   - Go to Console → Messaging → Services → **Create Messaging Service**
+   - Name it (e.g. `OutreachTool`) and select **"Market my services"** as the use case
+   - Go to the **Senders** tab and add your registered Alphanumeric Sender ID to the sender pool
+   - Copy the Messaging Service SID — it starts with `MG`
    - Set it in `.env`:
      ```
-     TWILIO_FROM_NUMBER=WebRedesign
+     TWILIO_MESSAGING_SERVICE_SID=MGxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
      ```
-   - Note: recipients see your sender name instead of a phone number and cannot reply
+   - Twilio will automatically route UK messages through your alphanumeric sender ID via Country Code Geomatch
 
 > **SMS pricing:** Sending to UK numbers costs approximately £0.04/message. Check [twilio.com/sms/pricing](https://www.twilio.com/sms/pricing) for current rates. No opt-ins or template approvals required.
 
