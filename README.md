@@ -49,28 +49,37 @@ Fill in your credentials in `.env` before running anything.
 
 ## Getting an Alphanumeric Sender ID
 
-An Alphanumeric Sender ID is a custom name (up to **11 characters**) that appears as the sender of your SMS instead of a phone number — e.g. `MyBiz` or `Outreach1`.
+An Alphanumeric Sender ID is a custom name (up to **11 characters**) that appears as the SMS sender instead of a phone number — e.g. `MyBiz` or `Outreach1`.
+
+> **Note:** The **Messaging → Senders** section in the left nav only covers Short codes and WhatsApp senders. Alphanumeric sender IDs are added **inside a specific Messaging Service**, not there.
 
 **Formatting rules:**
 - Max 11 characters
-- Allowed: letters (A–Z, a–z), digits (0–9), and spaces
+- Allowed: letters (A–Z, a–z), digits (0–9), spaces, hyphens, underscores
 - Must contain at least one letter (cannot be all numbers)
-- No special characters (no `@`, `&`, `!`, etc.)
 
-**Steps to register (UK requires pre-registration):**
+**Step 1 — Enable the feature (do this first or the option won't appear):**
 
-1. Log in to the [Twilio Console](https://console.twilio.com)
-2. Go to **Messaging → Settings → General** and confirm **Alphanumeric Sender ID** is set to **Enabled**
-3. Go to **Messaging → Services**, open your Messaging Service, then click **Add Sender** under the Senders tab
-4. Select **Alpha Sender** from the dropdown and type your desired sender name
-5. For **UK numbers**, Twilio requires pre-registration:
-   - In the Console, navigate to **Phone Numbers → Regulatory Compliance → Alphanumeric Sender ID Registration**
-   - Click **Register** next to United Kingdom
-   - Fill out the form (business name, address, use case description) and submit any required documents
-   - Approval typically takes a few business days
-6. Once approved, your sender name will appear in the Senders list and Twilio will route UK messages through it automatically
+1. In the Twilio Console go to **Messaging → Settings → General**
+2. Find **Alphanumeric Sender ID** and set it to **Enabled**, then save
 
-> **Note:** Alphanumeric Sender IDs are one-way only — recipients cannot reply to them. They are not available on Twilio free trial accounts; you must upgrade to a paid account first.
+**Step 2 — UK pre-registration (required for United Kingdom):**
+
+1. Go to **Messaging → Regulatory Compliance** in the Console
+2. Find **Alphanumeric Sender ID** and click **Register** next to **United Kingdom**
+3. Fill in your business name, address, and use case description
+4. Submit — approval typically takes a few business days
+
+**Step 3 — Add it to your Messaging Service:**
+
+1. Go to **Messaging → Services** and open your service (e.g. `OutreachTool`)
+2. Under the **Senders** tab click **Add Senders**
+3. From the dropdown select **Alpha Sender**
+4. Type your desired name (e.g. `MyBiz`) and save
+
+Once added, Twilio routes UK messages through your alphanumeric name automatically via Country Code Geomatch.
+
+> **Note:** Alphanumeric Sender IDs are one-way — recipients cannot reply. They require a paid Twilio account (not available on free trial).
 
 > **SMS pricing:** Sending to UK numbers costs approximately £0.04/message. Check [twilio.com/sms/pricing](https://www.twilio.com/sms/pricing) for current rates. No opt-ins or template approvals required.
 
