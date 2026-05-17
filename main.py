@@ -21,7 +21,7 @@ def send_daily_batch() -> None:
         return
 
     for lead in leads:
-        success = messenger.send_whatsapp(lead["name"], lead["phone"])
+        success = messenger.send_sms(lead["name"], lead["phone"])
         if success:
             db.mark_messaged(lead["phone"])
             print(f"[batch] messaged {lead['name']} ({lead['phone']})")
