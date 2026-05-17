@@ -36,13 +36,16 @@ Fill in your credentials in `.env` before running anything.
    TWILIO_SID=your_account_sid
    TWILIO_TOKEN=your_auth_token
    ```
-4. Buy a Twilio phone number with SMS capability:
-   - Go to Console → Phone Numbers → Manage → Buy a number
-   - Make sure SMS is enabled for the number
+4. Register an Alphanumeric Sender ID (required for UK SMS):
+   - Go to Console → Messaging → Senders → Alphanumeric Sender IDs
+   - Click **Register an Alphanumeric Sender ID**
+   - Choose a name: max 11 characters, letters and numbers only, no spaces (e.g. `WebRedesign`)
+   - Complete the UK registration form — usually approved within a few hours
    - Set it in `.env`:
      ```
-     TWILIO_FROM_NUMBER=+441234567890
+     TWILIO_FROM_NUMBER=WebRedesign
      ```
+   - Note: recipients see your sender name instead of a phone number and cannot reply
 
 > **SMS pricing:** Sending to UK numbers costs approximately £0.04/message. Check [twilio.com/sms/pricing](https://www.twilio.com/sms/pricing) for current rates. No opt-ins or template approvals required.
 
